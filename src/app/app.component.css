@@ -1,0 +1,5 @@
+.json-code {
+    height: 420px;
+    overflow-y: scroll;
+    border: 1px solid black;
+}
