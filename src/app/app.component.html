@@ -1,9 +1,11 @@
 <div class="container">
 
+    <!-- Buttons: -->
     <div class="my-3">
-        <button class="btn btn-primary" (click)="showDialog()">Add</button>
+        <button class="btn btn-primary" (click)="showModal()">Add</button>
     </div>
 
+    <!-- Table: -->
     <div class="my-3" *ngIf="persons$ | async as persons">
         <p-table [value]="persons" [paginator]="true" [rows]="10">
             <ng-template pTemplate="header">
@@ -27,16 +29,15 @@
         </p-table>        
     </div>
 
+    <!-- Dump: -->
     <div class="mt-3">
-
         <h3>Data dump</h3>
-
         <textarea class="json-code w-100" readonly>{{persons$ | async | json}}</textarea>
-
     </div>
 
 </div>
 
+<!-- Dialog: -->
 <p-dialog [header]="null" [(visible)]="displayModal" modal="modal" [responsive]="true" width="800">
     <form [formGroup]="personForm" novalidate (ngSubmit)="addPerson(personForm.value)">
         <div class="form-group row">
