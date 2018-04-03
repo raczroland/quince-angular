@@ -11,7 +11,7 @@
             <ng-template pTemplate="header">
                 <tr>
                     <th *ngFor="let col of columns" [pSortableColumn]="col.field">
-                        {{col.header}}
+                        {{col.header}} <span *ngIf="col.field === 'name'"><br>(job title)</span>
                         <p-sortIcon [field]="col.field"></p-sortIcon>
                     </th>
                     <th></th>

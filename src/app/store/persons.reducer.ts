@@ -14,7 +14,7 @@ export const LOAD = 'LOAD';
 export function personsReducer(state: Person[], action: ExtendedAction) {
     switch (action.type) {
         case REMOVE: // remove a person from the list
-            return state.filter(person => JSON.stringify(person) !== JSON.stringify(action.payload));
+            return state.filter(person => JSON.stringify(person) !== JSON.stringify(action.payload)); // we check here if the two object are the same
         case ADD: // add a person to the list
             return [...state, action.payload];
         case LOAD: // load the list
