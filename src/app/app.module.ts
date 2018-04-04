@@ -11,6 +11,8 @@ import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 import { AppComponent } from './app.component';
 import { DataService } from './services/data.service';
 import { personsReducer } from './store/persons.reducer';
@@ -31,6 +33,7 @@ import { PersonsEffects } from './store/persons.effects';
     EffectsModule.forRoot([PersonsEffects]),
     ButtonModule,
     ReactiveFormsModule,
+    NgxChartsModule,
   ],
   providers: [
     DataService,

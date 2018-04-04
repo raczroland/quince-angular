@@ -9,10 +9,16 @@
  * Bootstrap
  * PrimeNG (for the table and the modal)
  * Font Awesome
+ * ngx-charts
 
 ## Notes
 
- * The app is using a service that mocks the backend.
+ * The app is mocking the backend.
+ * In the form the only required input is the name.
+ * The JSON contains an entry with a string age (":)"). For this reason and because the mockup shows a text input for the age:
+   * The input has a text type. In a real-world scenario it should have a number type with a validator.
+   * The chart gets a filtered data set.
+ * The chart is a pie chart (this is different from the React version), and it uses SVG.
 
 ## Development mode
 

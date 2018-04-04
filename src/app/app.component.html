@@ -2,7 +2,8 @@
 
     <!-- Buttons: -->
     <div class="my-3">
-        <button class="btn btn-primary" (click)="showModal()">Add</button>
+        <button class="btn btn-primary" (click)="showFormModal()">Add</button>
+        <button class="btn btn-secondary" (click)="showGraphModal()">Graph</button>
     </div>
 
     <!-- Table: -->
@@ -38,12 +39,12 @@
 </div>
 
 <!-- Dialog: -->
-<p-dialog [header]="null" [(visible)]="displayModal" modal="modal" [responsive]="true" width="800">
-    <form [formGroup]="personForm" novalidate (ngSubmit)="addPerson(personForm.value)">
+<p-dialog [header]="null" [(visible)]="displayFormModal" modal="modal" [responsive]="true" width="800">
+    <form #personFormEl="ngForm" [formGroup]="personForm" novalidate (ngSubmit)="addPerson(personForm.value)">
         <div class="form-group row">
             <label for="inputName" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-10">
-                <input formControlName="name" type="text" class="form-control" id="inputName" placeholder="Some text">
+                <input formControlName="name" type="text" class="form-control" id="inputName" placeholder="Some text" required>
             </div>
         </div>
         <div class="form-group row">
@@ -72,7 +73,17 @@
         </div>
     </form>
     <p-footer>
-        <button type="submit" pButton (click)="addPerson(personForm.value)" label="Ok"></button>
-        <button type="button" pButton (click)="displayModal = false" label="Cancel"></button>
+        <button type="submit" pButton (click)="addPerson(personForm.value)" label="Ok" [disabled]="!personFormEl.valid"></button>
+        <button type="button" pButton (click)="displayFormModal = false" label="Cancel"></button>
     </p-footer>
+</p-dialog>
+
+<!-- Graph: -->
+<p-dialog [header]="null" [(visible)]="displayGraphModal" modal="modal" [responsive]="true" width="800">
+    <ngx-charts-pie-chart
+        [view]="[700, 300]"
+        [results]="graphData"
+        [legend]="true"
+        [labels]="true">
+    </ngx-charts-pie-chart>
 </p-dialog>
